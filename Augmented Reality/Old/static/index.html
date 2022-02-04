@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AR IOT</title>
+    <meta name="AR" content="MTech" />
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      setInterval(() => {
+        console.log("I'm 2 seconds");
+      }, 2000);
+
+      AFRAME.registerComponent("my-test-component", {
+        tick: function() {
+          var res = {};
+          console.log("out", this.el);
+          $.ajax({
+            type: "GET",
+            url: "/testDevice",
+            success: function(result) {
+              var el = this.el;
+              res = JSON.parse(result);
+              console.log("in", el, "res", res.deviceType);
+              el.setAttribute("text", {
+                value: res.deviceType
+              });
+            }.bind(this),
+            error: function(err) {}
+          });
+          // var el = this.el;
+          // var xhr = new XMLHttpRequest();
+          // xhr.open("GET", "/testDevice");
+          // // xhr.withCredentials = false;
+
+          // xhr.send();
+          // var json_obj = JSON.parse(res);
+
+          // console.log("response", xhr.responseText);
+          // console.log("resp", res.deviceType);
+
+          // el.setAttribute("text", {
+          //   value: res.deviceType
+          // });
+        }
+      });
+    </script>
+  </head>
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded arjs>
+      <a-assets>
+        <a-asset-item id="scene" src="TEST3/Assets/scene.gltf"></a-asset-item>
+      </a-assets>
+      <a-marker preset="hiro">
+        <a-entity
+          gltf-model="#scene"
+          rotation="0 0 0"
+          position="0 1 0"
+        ></a-entity>
+        <a-entity
+          text="value: some text; wrapCount: 20; width: 3"
+          position="0 2 0"
+          my-test-component
+        ></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>

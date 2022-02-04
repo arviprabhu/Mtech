@@ -1,0 +1,6 @@
+---
+applications:
+  - name: ArApp
+    buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+    command: node server.js
+    memory: 1024M

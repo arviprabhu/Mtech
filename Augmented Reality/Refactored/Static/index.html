@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AR IOT</title>
+    <meta name="AR" content="MTech" />
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <!-- <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/Script/ar.js"></script>
+    <script type="text/javascript" src="/Script/LiveData.js"></script>
+  </head>
+
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded arjs>
+      <a-assets>
+        <a-asset-item id="scene" src="Assets/Cleaner/scene.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-marker
+        type="pattern"
+        url="https://raw.githubusercontent.com/jeromeetienne/AR.js/master/data/multimarkers/multi-abcdef/patt.a"
+        size="1"
+      >
+        <!-- <a-box position="0 0 0" scale="1.5 1.5 1.5" color="red"></a-box> -->
+
+        <a-entity
+          gltf-model="#scene"
+          rotation="0 0 0"
+          position="0 0 0"
+          scale="0.01 0.01 0.01"
+        ></a-entity>
+
+        <a-entity
+          text="value: Loading...; wrapCount: 20; width: 3"
+          position="0.1 0.3 0"
+          temperature
+        ></a-entity>
+
+        <a-entity
+          text="value: Loading...; wrapCount: 20; width: 3"
+          position="2 0.7 0"
+          humidity
+        ></a-entity>
+
+        <a-entity
+          text="value: Loading...; wrapCount: 20; width: 3"
+          position="1 1 0"
+          alerts
+        ></a-entity>
+
+        <a-entity
+          text="value: Loading...; wrapCount: 20; width: 3"
+          position="0.7 0.7 0"
+          current_load
+        ></a-entity>
+      </a-marker>
+
+      <!-- <a-marker preset="hiro">
+        <a-entity
+          gltf-model="#scene"
+          rotation="0 0 0"
+          position="0 1 0"
+          scale="0.01 0.01 0.01"
+        ></a-entity>
+
+        <a-entity
+          id="changetexthere"
+          text="value: some text; wrapCount: 20; width: 3"
+          position="0 2 0"
+          my-test-component
+        ></a-entity>
+      </a-marker> -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
