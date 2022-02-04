@@ -1,0 +1,22 @@
+{
+  "name": "iotar",
+  "description": "Mtech",
+  "version": "0.3.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "express-proxy": "0.0.2",
+    "proxy-express": "^2.0.1"
+  },
+  "keywords": [
+    "aframe",
+    "aframe-example",
+    "aframe-boilerplate",
+    "aframe-scene",
+    "webvr",
+    "vr"
+  ]
+}

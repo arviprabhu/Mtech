@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AR IOT</title>
+    <meta name="AR" content="MTech" />
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded arjs>
+      <a-assets>
+        <a-asset-item id="scene" src="TEST3/Assets/scene.gltf"></a-asset-item>
+      </a-assets>
+      <a-marker preset="hiro">
+        <a-entity gltf-model="#scene" rotation="0 0 0"></a-entity>
+        <a-text value="Hello" position="1 0 0"></a-text>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
